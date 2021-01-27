@@ -98,7 +98,7 @@ body {
 
 .hint {
     text-align: center;
-    background: rgba(206, 88, 88, .65);
+    background: #e31836af;
     width: 300px;
     margin: 1rem auto;
     color: #fff;
