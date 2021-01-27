@@ -5,6 +5,7 @@ import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 
 import logo from '../../assets/pizza.png';
 import useStyles from './styles';
+import '../Form/style.css'
 
 const PrimarySearchAppBar = ({ totalItems }) => {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -35,8 +36,13 @@ const PrimarySearchAppBar = ({ totalItems }) => {
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
           <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
-            <img src={logo} alt="Italiano" height="25px" className={classes.image} /> Italiano
+            Menu
           </Typography>
+          <a className="mainPage" href="https://italiano-restaurant.netlify.app/">
+            <Typography variant="h6" className={classes.title} color="inherit">
+              <img src={logo} alt="Italiano" height="25px" className={classes.image} /> Italiano
+          </Typography>
+          </a>
           <div className={classes.grow} />
           {location.pathname === '/' && (
             <div className={classes.button}>

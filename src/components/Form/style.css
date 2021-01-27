@@ -83,3 +83,19 @@
     text-transform: uppercase;
     letter-spacing: var(--spacing);
 }
+
+.mainPage {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    z-index: 3;
+}
+
+.hint {
+    text-align: center;
+    background: rgba(131, 131, 131, .7);
+    width: 400px;
+    margin: 1rem auto;
+    color: #fff;
+    padding: .5rem 1rem;
+}

@@ -7,11 +7,16 @@ import useStyles from './styles';
 const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
 
-  if (!products.length) return <p>Loading...</p>;
+  if (!products.length) return <div style={{ marginTop: "200px", textAlign: 'center' }} className={classes.toolbar}>
+    <h3> ... يتم تحميل قائمة الطعام</h3>;
+  </div>
 
   return (
     <main className={classes.content}>
       <div className={classes.toolbar} />
+      <h2 className="hint">
+        اضغط على الأيقونة أسفل الوجبة لاضافتها الى طلباتك
+          </h2>
       <Grid container justify="center" spacing={4}>
         {products.map((product) => (
           <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
