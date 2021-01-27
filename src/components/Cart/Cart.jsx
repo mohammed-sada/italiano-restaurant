@@ -11,8 +11,9 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const handleEmptyCart = () => onEmptyCart();
 
   const renderEmptyCart = () => (
-    <Typography variant="subtitle1">You have no items in your shopping cart,
-      <Link className={classes.link} to="/">start adding some</Link>!
+    <Typography variant="subtitle1">,انت لم تطلب شيئا بعد
+      <br />
+      <Link className={classes.link} to="/">! اضافة طلب</Link>
     </Typography>
   );
 
@@ -28,20 +29,20 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
         ))}
       </Grid>
       <div className={classes.cardDetails}>
-        <Typography variant="h4">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
+        <Typography variant="h4">{cart.subtotal.formatted_with_symbol}:المبلغ الكلي</Typography>
         <div>
-          <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
-          <Button className={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
+          <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>حذف الكل</Button>
+          <Button className={classes.checkoutButton} component={Link} to="/review" size="large" type="button" variant="contained" color="primary">التالي</Button>
         </div>
       </div>
     </>
   );
 
   return (
-    <Container>
+    <Container className={classes.background}>
       <div className={classes.toolbar} />
-      <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
-      { !cart.line_items.length ? renderEmptyCart() : renderCart() }
+      <Typography className={classes.title} variant="h3" gutterBottom>طلباتي</Typography>
+      { !cart.line_items.length ? renderEmptyCart() : renderCart()}
     </Container>
   );
 };

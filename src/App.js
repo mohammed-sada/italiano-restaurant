@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Navbar, Products, Cart, Checkout } from './components';
+import { Navbar, Products, Cart } from './components';
 import { commerce } from './lib/commerce';
+import Review from './components/Form/Review';
+import AddressForm from './components/Form/AddressForm';
+import End from './components/End';
 
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
-  const [order, setOrder] = useState({});
-  const [errorMessage, setErrorMessage] = useState('');
+
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -52,28 +54,35 @@ const App = () => {
     setCart(newCart);
   };
 
-  const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
-    try {
-      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
-
-      setOrder(incomingOrder);
-
-      refreshCart();
-    } catch (error) {
-      setErrorMessage(error.data.error.message);
-    }
-  };
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
   useEffect(() => {
     fetchProducts();
     fetchCart();
   }, []);
 
-  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
+
+  const [checkoutToken, setCheckoutToken] = useState(null);
+
+  useEffect(() => {
+    if (cart.id) {
+      const generateToken = async () => {
+        try {
+          const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
+
+          setCheckoutToken(token);
+        } catch (err) {
+          console.log(err)
+        }
+      };
+
+      generateToken();
+    }
+  }, [cart]);
 
   return (
-    <Router>
-      <div style={{ display: 'flex' }}>
+    <Router >
+      <div>
         <CssBaseline />
         <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
         <Switch>
@@ -83,8 +92,14 @@ const App = () => {
           <Route exact path="/cart">
             <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
           </Route>
-          <Route path="/checkout" exact>
-            <Checkout cart={cart} order={order} onCaptureCheckout={handleCaptureCheckout} error={errorMessage} />
+          <Route exact path="/review">
+            <Review checkoutToken={checkoutToken} />
+          </Route>
+          <Route exact path="/address">
+            <AddressForm checkoutToken={checkoutToken} refreshCart={refreshCart} />
+          </Route>
+          <Route exact path="/end">
+            <End />
           </Route>
         </Switch>
       </div>
