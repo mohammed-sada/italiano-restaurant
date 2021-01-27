@@ -35,11 +35,11 @@ const PrimarySearchAppBar = ({ totalItems }) => {
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
         <Toolbar>
-          <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
+          <Typography component={Link} to="/" variant="h5" className={classes.title} color="inherit">
             Menu
           </Typography>
           <a className="mainPage" href="https://italiano-restaurant.netlify.app/">
-            <Typography variant="h6" className={classes.title} color="inherit">
+            <Typography variant="h5" className={classes.title} color="inherit">
               <img src={logo} alt="Italiano" height="25px" className={classes.image} /> Italiano
           </Typography>
           </a>
