@@ -16,8 +16,6 @@ const Review = ({ checkoutToken }) => {
                     <div className="contact-form">
                         <div>
                             <CssBaseline />
-                            {console.log(checkoutToken)}
-
                             <div className={classes.toolbar} />
                             <Typography variant="h6" gutterBottom>ملخص الطلب</Typography>
                             <List disablePadding>
