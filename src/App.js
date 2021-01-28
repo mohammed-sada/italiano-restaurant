@@ -8,7 +8,7 @@ import { commerce } from './lib/commerce';
 import Review from './components/Form/Review';
 import AddressForm from './components/Form/AddressForm';
 import End from './components/End';
-
+import './components/Form/style.css'
 const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
@@ -19,7 +19,7 @@ const App = () => {
     typography: {
       fontFamily: [
         'Yusei Magic',
-        'Rakkas',
+        'Cairo',
         'sans-serif',
       ].join(','),
     },

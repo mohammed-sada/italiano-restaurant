@@ -4,6 +4,7 @@ import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 
 import useStyles from './styles';
 
+
 const Product = ({ product, onAddToCart }) => {
   const classes = useStyles();
 
