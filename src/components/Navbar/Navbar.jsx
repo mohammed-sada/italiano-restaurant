@@ -34,7 +34,7 @@ const PrimarySearchAppBar = ({ totalItems }) => {
   return (
     <>
       <AppBar position="fixed" className={classes.appBar} color="inherit">
-        <Toolbar>
+        <Toolbar style={{ fontFamily: 'Yusei Magic, sans-serif' }}>
           <Typography component={Link} to="/" variant="h5" className={classes.title} color="inherit">
             Menu
           </Typography>

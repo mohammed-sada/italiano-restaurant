@@ -8,6 +8,7 @@ import Loading from '../Loading';
 const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
 
+
   if (!products.length) return <Loading subject="قائمة الطعام" />
 
   return (

@@ -21,7 +21,7 @@ const Product = ({ product, onAddToCart }) => {
             ₪{product.price.formatted}
           </Typography>
         </div>
-        <Typography style={{ textAlign: "right" }} dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" component="p" />
+        <Typography style={{ textAlign: "right" }} dangerouslySetInnerHTML={{ __html: product.description }} variant="h6" color="textSecondary" component="p" />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
         <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>

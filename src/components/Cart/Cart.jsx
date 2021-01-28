@@ -44,6 +44,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
       <div className={classes.toolbar} />
       <Typography className={classes.title} variant="h3" gutterBottom>طلباتي</Typography>
       { !cart.line_items.length ? renderEmptyCart() : renderCart()}
+      <div style={{ marginBottom: '25px' }} />
     </Container>
   );
 };

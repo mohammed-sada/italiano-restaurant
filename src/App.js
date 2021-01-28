@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { Navbar, Products, Cart } from './components';
 import { commerce } from './lib/commerce';
@@ -12,6 +13,17 @@ const App = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Yusei Magic',
+        'Rakkas',
+        'sans-serif',
+      ].join(','),
+    },
+  });
 
 
   const fetchProducts = async () => {
@@ -81,29 +93,32 @@ const App = () => {
   }, [cart]);
 
   return (
-    <Router >
-      <div>
-        <CssBaseline />
-        <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
-        <Switch>
-          <Route exact path="/">
-            <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
-          </Route>
-          <Route exact path="/cart">
-            <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
-          </Route>
-          <Route exact path="/review">
-            <Review checkoutToken={checkoutToken} />
-          </Route>
-          <Route exact path="/address">
-            <AddressForm checkoutToken={checkoutToken} refreshCart={refreshCart} />
-          </Route>
-          <Route exact path="/end">
-            <End />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router >
+        <div>
+          <CssBaseline />
+          <Navbar totalItems={cart.total_items} handleDrawerToggle={handleDrawerToggle} />
+          <Switch>
+            <Route exact path="/">
+              <Products products={products} onAddToCart={handleAddToCart} handleUpdateCartQty />
+            </Route>
+            <Route exact path="/cart">
+              <Cart cart={cart} onUpdateCartQty={handleUpdateCartQty} onRemoveFromCart={handleRemoveFromCart} onEmptyCart={handleEmptyCart} />
+            </Route>
+            <Route exact path="/review">
+              <Review checkoutToken={checkoutToken} />
+            </Route>
+            <Route exact path="/address">
+              <AddressForm checkoutToken={checkoutToken} refreshCart={refreshCart} />
+            </Route>
+            <Route exact path="/end">
+              <End />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </ThemeProvider>
+
   );
 };
 
