@@ -1,11 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 // import img from "../../assets/pizza-1.jpg";
 export default makeStyles((theme) => ({
-  // background: {
-  //   backgroundImage: `url(${img})`,
-  //   backgroundPosition: 'center',
-  //   backgroundSize: 'cover'
-  // },
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
