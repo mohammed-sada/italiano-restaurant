@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import CartItem from './CartItem/CartItem';
 import useStyles from './styles';
+import Loading from '../Loading';
 
 const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const classes = useStyles();
@@ -17,7 +18,7 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
     </Typography>
   );
 
-  if (!cart.line_items) return 'Loading';
+  if (!cart.line_items) return <Loading subject="الطلبات" />
 
   const renderCart = () => (
     <>

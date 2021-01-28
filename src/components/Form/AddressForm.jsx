@@ -51,7 +51,7 @@ const AddressForm = ({ checkoutToken, refreshCart }) => {
                                 {checkoutToken !== null &&
                                     checkoutToken.live.line_items.map(product => (
                                         <div key={product.name} >
-                                            <input hidden defaultValue={`(${product.name} عدد: ×${product.quantity})`} name="mealName" />
+                                            <input hidden defaultValue={`${product.name} - عدد: ×${product.quantity} - ${product.line_total.formatted_with_symbol}`} name="mealName" />
                                         </div>
                                     ))
                                 }

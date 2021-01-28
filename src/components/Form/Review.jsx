@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, List, ListItem, ListItemText, CssBaseline, Button } from '@material-ui/core';
 import useStyles from './styles';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
 
 
 const Review = ({ checkoutToken }) => {
@@ -15,6 +16,8 @@ const Review = ({ checkoutToken }) => {
                     <div className="contact-form">
                         <div>
                             <CssBaseline />
+                            {console.log(checkoutToken)}
+
                             <div className={classes.toolbar} />
                             <Typography variant="h6" gutterBottom>ملخص الطلب</Typography>
                             <List disablePadding>
@@ -34,7 +37,7 @@ const Review = ({ checkoutToken }) => {
                             <Button component={Link} to="/address" size="large" type="button" variant="contained" color="primary">التالي</Button>
                         </div>
                     </div>
-                </div> : <div>loading ...</div>}
+                </div> : <Loading subject="الطلب" />}
 
         </>
     );

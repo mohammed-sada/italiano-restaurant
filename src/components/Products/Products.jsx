@@ -3,17 +3,12 @@ import Grid from '@material-ui/core/Grid';
 
 import Product from './Product/Product';
 import useStyles from './styles';
-import { CircularProgress } from '@material-ui/core';
+import Loading from '../Loading';
 
 const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
 
-  if (!products.length) return <div style={{ marginTop: "200px", textAlign: 'center' }} className={classes.toolbar}>
-    <h3> ...  يتم تحميل قائمة الطعام, يرجى الانتظار</h3>
-    <div className={classes.spinner}>
-      <CircularProgress color="#e31836" />
-    </div>
-  </div>
+  if (!products.length) return <Loading subject="قائمة الطعام" />
 
   return (
     <main className={classes.content}>
