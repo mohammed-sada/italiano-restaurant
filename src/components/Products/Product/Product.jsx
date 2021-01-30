@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@material-ui/core';
+import { Card, CardMedia, CardContent, CardActions, Typography, IconButton, Tooltip } from '@material-ui/core';
 import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 
 import useStyles from './styles';
@@ -25,9 +25,11 @@ const Product = ({ product, onAddToCart }) => {
         <Typography style={{ textAlign: "right" }} dangerouslySetInnerHTML={{ __html: product.description }} variant="h6" color="textSecondary" component="p" />
       </CardContent>
       <CardActions disableSpacing className={classes.cardActions}>
-        <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
-          <LocalPizzaIcon />
-        </IconButton>
+        <Tooltip title="اضافة إلى الطلبات" aria-label="اضافة">
+          <IconButton aria-label="Add to Cart" onClick={handleAddToCart}>
+            <LocalPizzaIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );
